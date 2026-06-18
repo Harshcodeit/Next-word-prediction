@@ -1,5 +1,5 @@
 import streamlit as st
-import pickle
+import joblib
 import numpy as np
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.sequence import pad_sequences
@@ -9,11 +9,12 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 # ------------------------------
 @st.cache_resource
 def load_resources():
-    model = load_model("lstm_model (1).h5")
-    with open("tokenizer.pkl", "rb") as f:
-        tokenizer = pickle.load(f)
-    with open("max_len.pkl", "rb") as f:
-        max_len = pickle.load(f)
+    model = load_model("lstm_model.h5")
+    
+    tokenizer = joblib.load("tokenizer.pkl")
+    
+    max_len = joblib.load("max_len.pkl")
+
     return model, tokenizer, max_len
 
 model, tokenizer, max_len = load_resources()
