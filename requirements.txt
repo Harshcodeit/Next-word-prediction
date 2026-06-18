@@ -1,4 +1,4 @@
-streamlit
-joblib
-numpy
-tensorflow
+streamlit==1.35.0
+joblib==1.42.
+numpy==1.26.4
+tensorflow==2.15.0
